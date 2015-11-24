@@ -142,7 +142,7 @@ int irc_reply_message(irc_t *irc, char *irc_nick, char *msg) {
     }
 
     if (strcmp(command, "snare") == 0){
-        if (irc_msg(irc->s, irc->channel, "dis sux") < 0 ){
+        if (irc_msg(irc->s, irc->channel, "not snare again ?! NOO! PLZ!") < 0 ){
             return -1;
         }
     }
