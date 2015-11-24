@@ -4,11 +4,11 @@
 int main(int argc, char **argv) {
     irc_t irc;
 
-    if (irc_connect(&irc, "185.30.166.38", "6667") < 0) { // this is orwell.freenode.net right here !
+    if (irc_connect(&irc, "185.30.166.38", "6667") < 0) { // orwell.freenode.net 
         fprintf(stderr, "Connection failed.\n");
         goto error;
     }
-    if (irc_login(&irc, "maister_") < 0) {
+    if (irc_login(&irc, "zanoni_minion") < 0) {
         fprintf(stderr, "Couldn't log in.\n");
         goto error;
     }
@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
     while (irc_handle_data(&irc) >= 0);
 
 error:
-    close(irc->s);
-    fclose(irc->file);
+    close(irc.s);
+    fclose(irc.file);
     return 0;
 }
