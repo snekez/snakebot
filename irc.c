@@ -12,7 +12,7 @@ int irc_connect(irc_t *irc, const char* server, const char* port) {
        return -1;
     }
     irc->bufptr = 0;
-    irc_set_output(&irc, "/dev/stdout");
+    irc_set_output(irc, "/dev/null");
     return 0;
 }
 
@@ -31,7 +31,7 @@ int irc_login(irc_t *irc, const char* nick) {
 int irc_join_channel(irc_t *irc, const char* channel) {
     strncpy(irc->channel, channel, 254);
     irc->channel[254] = '\0';
-    return sck_sendf(s, "JOIN %s\r\n", channel);
+    return sck_sendf(irc->s, "JOIN %s\r\n", channel);
 }
 
 int irc_handle_data(irc_t *irc) {
@@ -67,7 +67,7 @@ int irc_parse_action(irc_t *irc) {
     char irc_msg[512];
 
     if (strncmp(irc->servbuf, "PING :", 6) == 0) {
-        return sck_sendf(s, "PONG :%s\r\n", &irc->servbuf[6]);
+        return sck_sendf(irc->s, "PONG :%s\r\n", &irc->servbuf[6]);
     } else if (strncmp(irc->servbuf, "NOTICE AUTH :", 13) == 0 || strncmp(irc->servbuf, "ERROR :", 7) == 0) {
         return 0;
     } else {
@@ -104,9 +104,7 @@ int irc_parse_action(irc_t *irc) {
             }
             if (privmsg == 1 && strlen(irc_nick) > 0 && strlen(irc_msg) > 0) {
                 irc_log_message(irc, irc_nick, irc_msg);
-                if (irc_reply_message(irc, irc_nick, irc_msg) < 0) {
-                    return -1;
-                }
+                return irc_reply_message(irc, irc_nick, irc_msg);
             }
         }
     }
@@ -135,18 +133,7 @@ int irc_reply_message(irc_t *irc, char *irc_nick, char *msg) {
         if (irc_msg(irc->s, irc->channel, "ssSSsSssSssSsssssSSsSSSSsSssSSSSsssSSSSsssSSsssSssssSssssSSssSSsSssssSSsSSssSsssSssSSSS") < 0) {
             return -1;
         }
-    }
-    if (strcmp(command, "snoke") == 0) {
-        if (irc_msg(irc->s, irc->channel, "snoke again? gtfo.") < 0) {
-            return -1;
-        }
-    }
-    else if (strcmp(command, "snare") == 0) {
-        if (irc_msg(irc->s, irc->channel, "Snare ? SNARE ?!??!?! BITCHES!") < 0) {
-            return -1;
-        }
-    }
-
+    } 
     return 0;
 }
 
