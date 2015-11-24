@@ -1,4 +1,4 @@
-/* Alright so far this motherfucker answers to the ".snake", ".snoke" and ".snare" commands. 
+/* Alright so far this guy answers to the ".snake", ".snoke" and ".snare" commands. 
                                     Is also dumb as fuck */
 
 
@@ -133,7 +133,20 @@ int irc_reply_message(irc_t *irc, char *irc_nick, char *msg) {
         if (irc_msg(irc->s, irc->channel, "ssSSsSssSssSsssssSSsSSSSsSssSSSSsssSSSSsssSSsssSssssSssssSSssSSsSssssSSsSSssSsssSssSSSS") < 0) {
             return -1;
         }
-    } 
+    }
+
+    if (strcmp(command, "snoke") == 0) {
+        if (irc_msg(irc->s, irc->channel, "snoke again? gtfo.") < 0) {
+            return -1;
+        }
+    }
+
+    if (strcmp(command, "snare") == 0){
+        if (irc_msg(irc->s, irc->channel, "dis sux") < 0 ){
+            return -1;
+        }
+    }
+
     return 0;
 }
 
