@@ -158,6 +158,12 @@ int irc_reply_message(irc_t *irc, char *irc_nick, char *msg) {
             return -1;
         }
     }
+    
+    if (strcmp(command, "help") == 0){
+        if (irc_msg(irc->s, irc->channel, "Available commands are: .mad .holy .snoke .snake .snare ") < 0 ){
+            return -1;
+        }
+    }
 
     return 0;
 }
