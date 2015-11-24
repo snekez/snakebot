@@ -1,5 +1,5 @@
-/* Alright so far this motherfucker answers to the ".snake", ".snoke" and ".snare" commands. 
-                                    Is also dumb as fuck */
+/* Alright so far this guy answers to the ".snake", ".snoke" and ".snare" commands. 
+                                 Is also pretty dumb */
 
 
 #include "socket.h"
