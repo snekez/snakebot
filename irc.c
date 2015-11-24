@@ -1,3 +1,7 @@
+/* Alright so far this motherfucker answers to the ".snake", ".snoke" and ".snare" commands. 
+                                    Is also dumb as fuck */
+
+
 #include "socket.h"
 #include "irc.h"
 #include <string.h>
@@ -159,4 +163,3 @@ int irc_log_message(irc_t *irc, const char* nick, const char* message) {
 int irc_msg(int s, const char *channel, const char *data) {
    return sck_sendf(s, "PRIVMSG %s :%s\r\n", channel, data);
 }
-
