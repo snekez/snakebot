@@ -1,8 +1,9 @@
 # snakebot
 Snake bot is a revolutionary IRC bot.
 
-To run the bot just modify the main.c and add your own channel and change his nick.
-After that just type ./run (If you're on Linux) and it will join your channel!
+To run the bot just:
+1. Modify the main.c and add your own channel and change his nick.
+2. Type ./run (If you're on Linux) and it will join your channel!
 
 We own the #snake channel on irc.freenode.net .
 
