@@ -1,5 +1,5 @@
 # snakebot
-Snake bot is a revolutionary IRC bot.
+Snake bot is a revolutionary (so far not really...) IRC bot.
 
 To run the bot just:
 
@@ -8,6 +8,6 @@ To run the bot just:
 
 We own the #snake channel on irc.freenode.net .
 
-cr3d1tz originally go to Themaister for providing the platform to build the snakebot on:
+Cr3d1tz originally go to Themaister for providing the platform to build the snakebot on:
 
 https://github.com/Themaister/simple-irc-bot
