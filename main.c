@@ -8,7 +8,7 @@ int main(int argc, char **argv) {
         fprintf(stderr, "Connection failed.\n");
         goto error;
     }
-    if (irc_login(&irc, "zanoni_minion") < 0) {
+    if (irc_login(&irc, "sneike") < 0) {  // change this !
         fprintf(stderr, "Couldn't log in.\n");
         goto error;
     }
