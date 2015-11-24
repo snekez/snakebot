@@ -173,7 +173,7 @@ int irc_reply_message(irc_t *irc, char *irc_nick, char *msg) {
 
     if (strcmp(command, "calc") == 0){
         double nrx = calc(4,4,'+');
-        if (irc_msg(irc->s, irc->channel, "%lf", nrx < 0 ){
+        if (irc_msg(irc->s, irc->channel, nrx < 0 ){
             return -1;
         }
     }
