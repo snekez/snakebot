@@ -9,13 +9,13 @@ int calc(double x, double y, char sign){
 
     switch (sign){
         case '+':
-        printf("%lf\n", x+y);
+        return (x+y);
         case '-':
-        printf("%lf\n", x-y);
+        return (x-y);
         case '/':
-        printf("%lf\n", x/y);
+        return (x/y);
         case '*':
-        printf("%lf\n", x*y);
+        return (x*y);
     }
 }
 
