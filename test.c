@@ -175,7 +175,7 @@ int irc_reply_message(irc_t *irc, char *irc_nick, char *msg) {
         double nrx = calc(4,4,'+');
         char output[sizeof(nrx)];
         memcpy(&output,&nrx,sizeof(nrx));
-        if (irc_msg(irc->s, irc->channel, (char*) nrx) < 0 ){
+        if (irc_msg(irc->s, irc->channel, (char*) &nrx) < 0 ){
             return -1;
         }
     }
