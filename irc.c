@@ -1,5 +1,5 @@
 /* Available commands are:
-".snake", ".snoke", ".snare", ".mad", ".holy" and ".calc" (still working on it) */
+".snake", ".snoke", ".snare", ".mad" and ".holy" */
 
 
 #include "socket.h"
@@ -180,9 +180,8 @@ int irc_reply_message(irc_t *irc, char *irc_nick, char *msg) {
 
     if (strcmp(command, "calc") == 0){
         double nrx = calc(4,4,'+');
-        printf("%f\n", nrx);
         char output[sizeof(nrx)];
-        sprintf(output, "%f", nrx);
+        sprintf(output, "%lf", nrx);
         printf("%s\n", output);
         if (irc_msg(irc->s, irc->channel, output) < 0 ){
             return -1;
