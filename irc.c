@@ -1,11 +1,24 @@
 /* Available commands are:
-".snake", ".snoke", ".snare", ".mad" and ".holy" */
+".snake", ".snoke", ".snare", ".mad", ".holy" and ".calc" (still working on it) */
 
 
 #include "socket.h"
 #include "irc.h"
 #include <string.h>
 #include <time.h>
+
+int calc(double x, double y, char sign){
+    switch (sign){
+        case '+':
+        return (x+y);
+        case '-':
+        return (x-y);
+        case '/':
+        return (x/y);
+        case '*':
+        return (x*y);
+    }
+}
 
 int irc_connect(irc_t *irc, const char* server, const char* port) {
     if ((irc->s =  get_socket(server, port)) < 0) {
@@ -160,7 +173,18 @@ int irc_reply_message(irc_t *irc, char *irc_nick, char *msg) {
     }
     
     if (strcmp(command, "help") == 0){
-        if (irc_msg(irc->s, irc->channel, "Available commands are: .mad .holy .snoke .snake .snare ") < 0 ){
+        if (irc_msg(irc->s, irc->channel, "Available commands are: .mad .holy .snoke .snake .snare .calc .") < 0 ){
+            return -1;
+        }
+    }
+
+    if (strcmp(command, "calc") == 0){
+        double nrx = calc(4,4,'+');
+        printf("%f\n", nrx);
+        char output[sizeof(nrx)];
+        sprintf(output, "%f", nrx);
+        printf("%s\n", output);
+        if (irc_msg(irc->s, irc->channel, output) < 0 ){
             return -1;
         }
     }
